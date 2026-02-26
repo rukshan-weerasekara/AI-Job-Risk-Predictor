@@ -18,7 +18,7 @@ def load_assets():
 try:
     model, scaler, le_job, le_ind = load_assets()
 except:
-    st.error("❌ Model files not found! Please upload .pkl files to the repository.")
+    st.error(" ...+")
 
 st.title("🤖 AI Job Risk Predictor")
 st.markdown("Enter your professional details to see how much AI could impact your job role.")
@@ -38,7 +38,7 @@ with col2:
     adoption = st.slider("AI Adoption Level (0-100)", 0.0, 100.0, 50.0)
 
 
-if st.button("Predict My Risk Level 🚀"):
+if st.button("Predict My Risk Level"):
    
     job_enc = le_job.transform([job_role])[0]
     ind_enc = le_ind.transform([industry])[0]
@@ -56,13 +56,13 @@ if st.button("Predict My Risk Level 🚀"):
     st.divider()
     if prediction == 'Low':
         st.balloons()
-        st.success(f"✅ Your Risk Category: **{prediction}**")
+        st.success(f"Your Risk Category: **{prediction}**")
         st.info("Great! Your role seems stable for now. Keep learning new tools.")
     elif prediction == 'Medium':
-        st.warning(f"⚠️ Your Risk Category: **{prediction}**")
+        st.warning(f"Your Risk Category: **{prediction}**")
         st.write("AI will assist your role. Consider upskilling in AI-driven technologies.")
     else:
-        st.error(f"🚨 Your Risk Category: **{prediction}**")
+        st.error(f"Your Risk Category: **{prediction}**")
         st.write("High risk of automation. Immediate reskilling is highly recommended.")
 
 st.sidebar.info("Developed by Rukshan Weerasekara | Creative Technologist & AI Enthusiast")
